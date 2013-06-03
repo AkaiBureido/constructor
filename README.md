@@ -1,4 +1,22 @@
-## Construct - the automated directory structure creator tool
+# Construct
+
+The automated directory structure creator tool.
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+    gem 'Construct'
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install Construct
+
+## Usage
 
 ```bash
 $ construct [template name] {--template-parameters=<value>}
@@ -34,3 +52,12 @@ of files. For I only process the template files.
 $ construct html5/bootstrap
 $ construct ruby/gem/plain --project_name="MyFuzzyGem"
 ```
+
+## Contributing
+
+1. Fork it
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create new Pull Request
+
