@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+require 'pry'
+
+# TODO:deal with arguments
+# first argument is the tempalte name
+template_offset_path = ARGV.shift.split("/")
+# there are a few possibilities now
+# the template can be:
+# * a zip file
+# * a directory
+# * or a plain file with instructions
+
+binding.pry
+# TODO: Create a directory if it does not exist.
+# TODO: Populate it with sample templates.
+# TODO: Cheeck the template name from arguments. 
+
+
+
+# vim:ft=ruby
