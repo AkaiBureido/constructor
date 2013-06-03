@@ -1,21 +1,84 @@
 #!/usr/bin/env ruby
 
+######################################################
+# TODO: Read the configuration from file
+# TODO: Populate default folder with sample templates.
+# TODO: Check the template from arguments. 
+######################################################
+
 require 'pry'
 
-# TODO:deal with arguments
-# first argument is the tempalte name
-template_offset_path = ARGV.shift.split("/")
-# there are a few possibilities now
-# the template can be:
-# * a zip file
-# * a directory
-# * or a plain file with instructions
+# Default constants:
+TEMPLATE_CATEGORY_SEPARATOR = "."
+TEMPLATE_BASE_PATH          = File.expand_path "~/.construct"
 
-binding.pry
+# check if default folder exists
 # TODO: Create a directory if it does not exist.
-# TODO: Populate it with sample templates.
-# TODO: Cheeck the template name from arguments. 
+if Dir.exist? TEMPLATE_BASE_PATH
+    puts "I'm on the boat!"
+else
+    puts "Creating the default folder..."
+    FileUtils.mkdir TEMPLATE_BASE_PATH
+end
 
+# TODO:deal with arguments
+# first argument is the tempalte name:
+first_parameter = ARGV.shift
+
+case first_parameter
+
+when "make"
+    template_offset_path = ARGV.shift.split(TEMPLATE_CATEGORY_SEPARATOR) 
+
+    # lets find the node in the file system 
+    requested_template_path = 
+        TEMPLATE_BASE_PATH + 
+        "/" + template_offset_path.join("/")
+
+    # there are a few possibilities now
+    # the template can be:
+    # * or a plain file with instructions
+    # * a directory
+    # * a zip file
+
+    template_type = nil
+    if File.exists? requested_template_path
+        template_type = :instruction_file
+    elsif Dir.exists? requested_template_path
+        template_type = :directory
+    elsif File.exists? requested_template_path + ".zip"
+        template_type = :zip_ball
+    else
+        puts "Error: the requested template #{requested_template_path} does not exist!"
+        exit
+    end
+    
+    # Now that we know the file type leets act accordingly
+    case template_type
+    when :instruction_file
+        # TODO: Figure out syntax
+        #
+        # Assumptions to make coding easier for now:
+        # * indents are 4 space wide.
+        #
+        # Every thing that follows # is considered a comment
+        
+        template_file = File.open requested_template_path
+        binding.pry
+
+    when :directory
+        # TODO: Simply copy the directory
+        
+    when:zip_ball
+        # TODO: Unpack the zip into folder
+    else
+    end
+    puts template_type
+
+    binding.pry
+else
+    puts "Error: Unknown command! See nonexistent help!"
+end
 
 
 # vim:ft=ruby
