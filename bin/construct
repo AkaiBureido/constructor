@@ -1,13 +1,31 @@
 #!/usr/bin/env ruby
 
-######################################################
+################################################################################
 # TODO: Read the configuration from file
 # TODO: Populate default folder with sample templates.
 # TODO: Check the template from arguments. 
+# TODO: Figure out the syntax I will use for 'construct'
+# TODO: Implement add and remove commands
 #
 # NOTE: BUT ABOVE ALL!!!!!!!!!!!!!!!!!
 # TODO: Refactor this sucker!
-######################################################
+################################################################################
+
+
+#===============================================================================
+# REFACTORING PLAN:
+# 1. Move the file detection stuff into the library
+# 2. Move the file processing into the library
+#===============================================================================
+
+# REFACTORING ZONES WILL BE DEPICTED THIS WAY:
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# [NUMBER] <The code I wish I had goes here>
+#
+# <THE CODE I ACTUALLY HAVE>
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 require 'pry'
 
@@ -15,16 +33,18 @@ require 'pry'
 TEMPLATE_CATEGORY_SEPARATOR = "."
 TEMPLATE_BASE_PATH          = File.expand_path "~/.construct"
 
-# check if default folder exists
-# TODO: Create a directory if it does not exist.
-if Dir.exist? TEMPLATE_BASE_PATH
-    puts "I'm on the boat!"
-else
-    puts "Creating the default folder..."
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# [1.] Construct::init {{{
+#
+# Check if default folder exists
+if not Dir.exist? TEMPLATE_BASE_PATH
+    # TODO: Populate default folder with sample templates.
+    # Creating a folder in case we dont have one
     FileUtils.mkdir TEMPLATE_BASE_PATH
 end
+# }}}
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# TODO:deal with arguments
 # first argument is the tempalte name:
 first_parameter = ARGV.shift
 
@@ -37,13 +57,14 @@ when "make"
     requested_template_path = 
         TEMPLATE_BASE_PATH + 
         "/" + template_offset_path.join("/")
-
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    # [2.] Construct::construct requested_template_path {{{
+    #
     # there are a few possibilities now
     # the template can be:
     # * or a plain file with instructions
     # * a directory
     # * a zip file
-
     template_type = nil
     if File.exists? requested_template_path
         template_type = :instruction_file
@@ -55,7 +76,7 @@ when "make"
         puts "Error: the requested template #{requested_template_path} does not exist!"
         exit
     end
-    
+
     # Now that we know the file type leets act accordingly
     case template_type
     when :instruction_file
@@ -81,14 +102,13 @@ when "make"
 
     when :directory
         # TODO: Simply copy the directory
-        
     when :zip_ball
         # TODO: Unpack the zip into folder
     else
     end
-    puts template_type
+    # }}}
+    #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    binding.pry
 # case "~~~~~~~"
     # TODO: Implement:
     # add    - adding a new template with editor, perhaps some cursing and black magic...
