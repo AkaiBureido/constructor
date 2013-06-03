@@ -6,6 +6,7 @@
 # TODO: Check the template from arguments. 
 # TODO: Figure out the syntax I will use for 'construct'
 # TODO: Implement add and remove commands
+# TODO: Use the help gem thing maybe. I don't remember the name.
 #
 # NOTE: BUT ABOVE ALL!!!!!!!!!!!!!!!!!
 # TODO: Refactor this sucker!
@@ -26,7 +27,6 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-
 require 'pry'
 
 # Default constants:
@@ -45,18 +45,15 @@ end
 # }}}
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# first argument is the tempalte name:
-first_parameter = ARGV.shift
-
-case first_parameter
-
+# first argument is the command name:
+case ARGV.shift
 when "make"
+    # First lets decypher the category of template based on category separator
     template_offset_path = ARGV.shift.split(TEMPLATE_CATEGORY_SEPARATOR) 
 
-    # lets find the node in the file system 
-    requested_template_path = 
-        TEMPLATE_BASE_PATH + 
-        "/" + template_offset_path.join("/")
+    # Getting the full path to the template 
+    requested_template_path = File.join TEMPLATE_BASE_PATH, *template_offset_path
+
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     # [2.] Construct::construct requested_template_path {{{
     #
@@ -104,7 +101,6 @@ when "make"
         # TODO: Simply copy the directory
     when :zip_ball
         # TODO: Unpack the zip into folder
-    else
     end
     # }}}
     #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
