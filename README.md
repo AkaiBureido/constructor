@@ -1,5 +1,8 @@
 # Construct
 
+Current Version: 0.2.0 (pre-alpha stage)
+- - - - - - - 
+
 The automated directory structure creator tool.
 
 ## Installation
