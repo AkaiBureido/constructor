@@ -2,15 +2,17 @@
 # TODO: Check the template from arguments. 
 # TODO: Implement add and remove commands
 # TODO: Use the help gem thing maybe. I don't remember the name.
+# TODO: Ask the user to give the name of the project.
 ################################################################################
 
 require 'construct'
+require 'construct/file-processor'
 require 'pry'
-#
+
 # Construct-cli deals with the command line interface aspect
 # of this app.
 module Construct
-	class ConstructCli
+	class Cli
 		def self.run largv
 			Construct::init
 
@@ -22,7 +24,6 @@ module Construct
 
 				# Getting the full path to the template 
 				requested_template_path = File.join TEMPLATE_BASE_PATH, *template_offset_path
-
 				Construct::FileProcessor.construct requested_template_path
 				# case "~~~~~~~"
 				# TODO: Implement:

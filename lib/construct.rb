@@ -1,3 +1,8 @@
+################################################################################
+# TODO: Read the configuration from file
+# TODO: Populate default folder with sample templates.
+################################################################################
+
 require "Construct/version"
 require 'logger'
 
@@ -15,15 +20,12 @@ module Construct
 	end
 
 	def self.init
-		log.debug "Initialising construct."
-
 		# Check if default folder exists
 		if not Dir.exist? TEMPLATE_BASE_PATH
 			# Creating a folder in case we dont have one
 			FileUtils.mkdir TEMPLATE_BASE_PATH
 
 			# TODO: Populate default folder with sample templates.
-
 		end
 	end
 end
