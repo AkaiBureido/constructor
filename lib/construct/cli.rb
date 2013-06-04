@@ -1,28 +1,8 @@
 ################################################################################
-# TODO: Read the configuration from file
-# TODO: Populate default folder with sample templates.
 # TODO: Check the template from arguments. 
-# TODO: Figure out the syntax I will use for 'construct'
 # TODO: Implement add and remove commands
 # TODO: Use the help gem thing maybe. I don't remember the name.
-#
-# NOTE: BUT ABOVE ALL!!!!!!!!!!!!!!!!!
-# TODO: Refactor this sucker!
 ################################################################################
-
-
-#===============================================================================
-# REFACTORING PLAN:
-# 1. Move the file detection stuff into the library [DONE]
-# 2. Move the file processing into the library [DONE]
-#===============================================================================
-
-# REFACTORING ZONES WILL BE DEPICTED THIS WAY:
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# [NUMBER] <The code I wish I had goes here>
-#
-# <THE CODE I ACTUALLY HAVE>
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 require 'construct'
 require 'pry'

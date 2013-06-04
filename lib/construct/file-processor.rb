@@ -1,6 +1,12 @@
+################################################################################
+# TODO: Read the configuration from file
+# TODO: Populate default folder with sample templates.
+# TODO: Figure out the syntax I will use for 'construct'
+################################################################################
+
 module Constructor
 	class FileProcessor
-		def self.construct
+		def self.construct requested_template_path
 			# there are a few possibilities
 			# the template can be:
 			# * or a plain file with instructions
