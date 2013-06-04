@@ -1,9 +1,9 @@
 ################################################################################
-# TODO: Figure out the syntax I will use for 'construct'
+# TODO: Figure out the syntax I will use for 'constructor'
 ################################################################################
-require 'construct'
+require 'constructor'
 
-module Construct
+module Constructor
 	class FileProcessor
 		def self.construct requested_template_path
 			# Find out what kind of template we have and act accordingly

@@ -3,10 +3,10 @@
 # TODO: Populate default folder with sample templates.
 ################################################################################
 
-require "Construct/version"
+require "constructor/version"
 require 'logger'
 
-module Construct
+module Constructor
 	# Default constants:
 	TEMPLATE_CATEGORY_SEPARATOR = "."
 	TEMPLATE_BASE_PATH          = File.expand_path "~/.construct"

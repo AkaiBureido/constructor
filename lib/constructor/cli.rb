@@ -5,16 +5,16 @@
 # TODO: Ask the user to give the name of the project.
 ################################################################################
 
-require 'construct'
-require 'construct/file-processor'
+require 'constructor'
+require 'constructor/file-processor'
 require 'pry'
 
-# Construct-cli deals with the command line interface aspect
+# Constructor-cli deals with the command line interface aspect
 # of this app.
-module Construct
+module Constructor
 	class Cli
 		def self.run largv
-			Construct::init
+			Constructor::init
 
 			# first argument is the command name:
 			case largv.shift
@@ -24,7 +24,7 @@ module Construct
 
 				# Getting the full path to the template 
 				requested_template_path = File.join TEMPLATE_BASE_PATH, *template_offset_path
-				Construct::FileProcessor.construct requested_template_path
+				Constructor::FileProcessor.construct requested_template_path
 				# case "~~~~~~~"
 				# TODO: Implement:
 				# add    - adding a new template with editor, perhaps some cursing and black magic...

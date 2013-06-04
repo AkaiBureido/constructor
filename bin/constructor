@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require 'construct/cli'
+require 'constructor/cli'
 puts "I am running!"
 
-Construct::Cli.run ARGV
+Constructor::Cli.run ARGV
 
 # vim:ft=ruby
