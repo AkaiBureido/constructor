@@ -4,12 +4,12 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'Construct/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "Construct"
+  spec.name          = "construct"
   spec.version       = Construct::VERSION
   spec.authors       = ["AkaiBureido"]
   spec.email         = ["utkin.oleg@me.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{The automated directory structure creator tool.}
+  spec.summary       = %q{The automated directory structure creator tool.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "pry"
 end
