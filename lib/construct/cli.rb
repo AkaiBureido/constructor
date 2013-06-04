@@ -13,7 +13,7 @@
 
 #===============================================================================
 # REFACTORING PLAN:
-# 1. Move the file detection stuff into the library
+# 1. Move the file detection stuff into the library [DONE]
 # 2. Move the file processing into the library
 #===============================================================================
 
@@ -24,25 +24,15 @@
 # <THE CODE I ACTUALLY HAVE>
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
+require 'construct'
 require 'pry'
 #
 # Construct-cli deals with the command line interface aspect
 # of this app.
 module Construct
 	class ConstructCli
-		def run largv
-			#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-			# [1.] Construct::init {{{
-			#
-			# Check if default folder exists
-			if not Dir.exist? TEMPLATE_BASE_PATH
-				# TODO: Populate default folder with sample templates.
-				# Creating a folder in case we dont have one
-				FileUtils.mkdir TEMPLATE_BASE_PATH
-			end
-			# }}}
-			#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+		def self.run largv
+			Construct::init
 
 			# first argument is the command name:
 			case largv.shift
