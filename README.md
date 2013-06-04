@@ -49,8 +49,8 @@ root. You can either have files that reference templates or directories with set
 of files. For I only process the template files.
 
 ```bash
-$ construct html5/bootstrap
-$ construct ruby/gem/plain --project_name="MyFuzzyGem"
+$ construct html5.bootstrap
+$ construct ruby.gem.plain --project_name="MyFuzzyGem"
 ```
 
 ## Contributing
